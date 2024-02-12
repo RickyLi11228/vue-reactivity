@@ -5,7 +5,8 @@
 </template>
 
 <script setup>
-import DestCard from "@/components/DestCard.vue";
+import DestCard from "@/components/Clicker.vue";
+
 </script>
 
 <style scoped></style>
