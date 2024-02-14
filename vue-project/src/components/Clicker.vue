@@ -16,6 +16,9 @@
   <h2>Increase Clicked Exponent By 0.05</h2>
   <button @click="upgrader4">Click Me</button>
   <h3>Cost: {{ upgrade4_cost }}</h3>
+  <h2>Prestige</h2>
+  <button @click="prestige">Click Me</button> <h2> PP gain: {{ prestige_gain }}</h2>
+  <h3>Cost: 1000000</h3>
 </template>
   
   <script setup>
@@ -26,19 +29,23 @@
   const DOMSelectors = {
     column: document.querySelector(".column"),
   }
-function insertCards(){
-  DOMSelectors.column.insertAdjacentHTML(
-      "beforeend",
-      `<div class="card">
-          <h3 class = "name"></h3>
-          <img src="" class="img">
-          <h4>PP Gain:${prestige_gain} </h4> 
-      </div>`)
-    }
-let prestige_gain = 0
-let prestige_points = 0
-if (clicked.value > 1000000)
-insertCards()
+  let prestige_gain = clicked.value/1000000
+function prestige (){
+  if (clicked.value > 1000000){
+    prestige_points = prestige_point + prestige_gain
+    upgrade1_cost = 1
+    upgrade2_cost = 100
+    upgrade3_cost = 10000
+    upgrade4_cost = 100000
+    clicklyclicker = 1
+    upgrade1.value = 1
+    upgrade2.value = 1
+    upgrade3.value = 0
+    upgrade4.value = 1
+  }else{
+    console.log(clicked.value)
+  }
+}
   let upgrade1_cost = 1
   let upgrade2_cost = 100
   let upgrade3_cost = 10000
@@ -78,7 +85,7 @@ insertCards()
   let upgrade4 = ref(1)
   function upgrader4() {
     if (upgrade4_cost <= clicked.value){
-    upgrade4.value = upgrade4.value + 0.05
+    upgrade4.value = upgrade4.value + 0.001
     clicklyclicker = ((1 + upgrade3.value) * upgrade1.value * upgrade2.value)** upgrade4.value
     clicked.value = clicked.value - upgrade4_cost
     upgrade4_cost = upgrade4_cost * 2
