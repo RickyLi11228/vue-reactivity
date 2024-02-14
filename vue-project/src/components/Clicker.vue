@@ -16,9 +16,6 @@
   <h2>Increase Clicked Exponent By 0.05</h2>
   <button @click="upgrader4">Click Me</button>
   <h3>Cost: {{ upgrade4_cost }}</h3>
-  <h2>Prestige</h2>
-  <button @click="prestige">Click Me</button> <h2> PP gain: {{ prestige_gain }}</h2>
-  <h3>Cost: 1000000</h3>
 </template>
   
   <script setup>
@@ -26,25 +23,17 @@
   const props = defineProps({
     Destination: Object,
   });
-  const DOMSelectors = {
-    column: document.querySelector(".column"),
-  }
-  let prestige_gain = clicked.value/1000000
-function prestige (){
-  if (clicked.value > 1000000){
-    prestige_points = prestige_point + prestige_gain
-    upgrade1_cost = 1
-    upgrade2_cost = 100
-    upgrade3_cost = 10000
-    upgrade4_cost = 100000
-    clicklyclicker = 1
-    upgrade1.value = 1
-    upgrade2.value = 1
-    upgrade3.value = 0
-    upgrade4.value = 1
-  }else{
-    console.log(clicked.value)
-  }
+  function insertCards(arr){
+    arr.forEach((card) => {
+        DOMSelectors.column.insertAdjacentHTML(
+            "beforeend",
+            `<div class="card">
+                <h3 class = "name">${card.name}</h3>
+                <img src="${card.img}" class="img" alt="${card.name} Picture">
+                <h4>Level: ${card.level}</h4> 
+            </div>`
+        )
+    });
 }
   let upgrade1_cost = 1
   let upgrade2_cost = 100
@@ -91,7 +80,6 @@ function prestige (){
     upgrade4_cost = upgrade4_cost * 2
     }
   }
-  
   </script>
   
   <style scoped>
