@@ -16,6 +16,11 @@
   <h2>Increase Clicked Exponent By 0.05</h2>
   <button @click="upgrader4">Click Me</button>
   <h3>Cost: {{ upgrade4_cost }}</h3>
+
+
+  <h2>Pets</h2>
+  <button @click="pet">Click Me</button>
+  <h3>Cost: 1 Prestige Point</h3>
 </template>
   
   <script setup>
@@ -23,6 +28,29 @@
   const props = defineProps({
     Destination: Object,
   });
+  const pets = [
+    {
+      name: "Cursor",
+      multiplier: 5,
+      img: "",
+    },
+    {
+      name: "Sliver Cursor",
+      multiplier: 10,
+      img: "",
+    },
+    {
+      name: "Golden Cursor",
+      multiplier: 25,
+      img: "",
+    },
+    {
+      name: "Diamond Cursor",
+      multiplier: 100,
+      img: "",
+    }
+  ]
+  const inventory = []
   function insertCards(arr){
     arr.forEach((card) => {
         DOMSelectors.column.insertAdjacentHTML(
@@ -80,7 +108,22 @@
     upgrade4_cost = upgrade4_cost * 2
     }
   }
-  </script>
+  function pet(){
+    if (prestige_points >= 1){
+      prestige_points = prestige_points - 1
+      const randomnumber = Math.floor(Math.random() * 3) + 1;
+    if (randomnumber === 1 || randomnumber === 2 || randomnumber === 3) {
+      const which_pet = pets.filter(((pets) => pets.name === "Cursor"))
+      console.log(which_pet)
+        inventory.push(which_pet.name)
+    } else if (randomnumber === 4 || randomnumber === 5) {
+        inventory.push(10)
+    } else if (randomnumber === 6) {
+        inventory.push(100)
+    }
+    }
+  }
+    </script>
   
   <style scoped>
   img {
