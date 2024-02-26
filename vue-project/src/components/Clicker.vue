@@ -17,7 +17,7 @@
   <button @click="upgrader4">Click Me</button>
   <h3>Cost: {{ upgrade4_cost }}</h3>
 
-
+  <button @click="insertPets">Show Pets</button>
   <h2>Pets</h2>
   <button @click="pet">Click Me</button>
   <h3>Cost: 1 Prestige Point</h3>
@@ -28,6 +28,9 @@
   const props = defineProps({
     Destination: Object,
   });
+  const DOMSelectors = {
+    column: document.querySelector(".column"),
+}
   const pets = [
     {
       name: "Cursor",
@@ -51,23 +54,26 @@
     }
   ]
   const inventory = []
-  function insertCards(arr){
-    arr.forEach((card) => {
+  function insertPets(){
+    pets.forEach((pet) => {
         DOMSelectors.column.insertAdjacentHTML(
             "beforeend",
             `<div class="card">
-                <h3 class = "name">${card.name}</h3>
-                <img src="${card.img}" class="img" alt="${card.name} Picture">
-                <h4>Level: ${card.level}</h4> 
+                <h3 class = "name">${pet.name}</h3>
+                <img src="${pet.img}" class="img" alt="${pet.name} Picture">
+                <h4>Multipler: ${pet.multiplier}</h4> 
             </div>`
         )
     });
 }
+   function value_update() {
+    clicklyclicker = ((1 + upgrade3.value) * upgrade1.value * upgrade2.value)** upgrade4.value
+   }
   let upgrade1_cost = 1
   let upgrade2_cost = 100
   let upgrade3_cost = 10000
   let upgrade4_cost = 100000
-  const clicked = ref(1000000);
+  const clicked = ref(999999);
   let clicklyclicker = 1
   function increment() {
     clicked.value = clicked.value + clicklyclicker;
@@ -76,7 +82,7 @@
   function upgrader1() {
     if (upgrade1_cost <= clicked.value){
     upgrade1.value = upgrade1.value + 1
-    clicklyclicker = ((1 + upgrade3.value) * upgrade1.value * upgrade2.value)** upgrade4.value
+    value_update()
     clicked.value = clicked.value - upgrade1_cost
     upgrade1_cost = upgrade1_cost * 3
     }
@@ -85,7 +91,7 @@
   function upgrader2() {
     if (upgrade2_cost <= clicked.value){
     upgrade2.value = upgrade2.value + 1
-    clicklyclicker = ((1 + upgrade3.value) * upgrade1.value * upgrade2.value)** upgrade4.value
+    value_update()
     clicked.value = clicked.value - upgrade2_cost
     upgrade2_cost = upgrade2_cost * 2
     }
@@ -94,7 +100,7 @@
   function upgrader3() {
     if (upgrade3_cost <= clicked.value){
     upgrade3.value = upgrade3.value + 10
-    clicklyclicker = ((1 + upgrade3.value) * upgrade1.value * upgrade2.value)** upgrade4.value
+    value_update()
     clicked.value = clicked.value - upgrade3_cost
     upgrade3_cost = upgrade3_cost * 2
     }
@@ -103,7 +109,7 @@
   function upgrader4() {
     if (upgrade4_cost <= clicked.value){
     upgrade4.value = upgrade4.value + 0.001
-    clicklyclicker = ((1 + upgrade3.value) * upgrade1.value * upgrade2.value)** upgrade4.value
+    value_update()
     clicked.value = clicked.value - upgrade4_cost
     upgrade4_cost = upgrade4_cost * 2
     }
