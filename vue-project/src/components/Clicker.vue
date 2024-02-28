@@ -114,19 +114,34 @@
     upgrade4_cost = upgrade4_cost * 2
     }
   }
+  let prestige_points = 10
+  function pet_multiplier() {
+    inventory.forEach((pet)=> console.log(pet));
+  }
   function pet(){
     if (prestige_points >= 1){
       prestige_points = prestige_points - 1
-      const randomnumber = Math.floor(Math.random() * 3) + 1;
-    if (randomnumber === 1 || randomnumber === 2 || randomnumber === 3) {
+      const randomnumber = Math.floor(Math.random() * 10) + 1;
+      console.log(randomnumber)
+    if (randomnumber === 1 || randomnumber === 2 || randomnumber === 3 || randomnumber === 4) {
       const which_pet = pets.filter(((pets) => pets.name === "Cursor"))
-      console.log(which_pet)
-        inventory.push(which_pet.name)
-    } else if (randomnumber === 4 || randomnumber === 5) {
-        inventory.push(10)
-    } else if (randomnumber === 6) {
-        inventory.push(100)
+        inventory.push(which_pet)
+        console.log(which_pet)
+    } else if (randomnumber === 5 || randomnumber === 6 || randomnumber === 7) {
+      const which_pet = pets.filter(((pets) => pets.name === "Sliver Cursor"))
+        inventory.push(which_pet)
+        console.log(which_pet)
+    } else if (randomnumber === 8 || randomnumber === 9) {
+      const which_pet = pets.filter(((pets) => pets.name === "Golden Cursor"))
+        inventory.push(which_pet)
+        console.log(which_pet)
+    } else if (randomnumber === 10) {
+      const which_pet = pets.filter(((pets) => pets.name === "Diamond Cursor"))
+        inventory.push(which_pet)
+        console.log(which_pet)
     }
+    pet_multiplier()
+    console.log(inventory)
     }
   }
     </script>
