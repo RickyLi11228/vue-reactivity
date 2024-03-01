@@ -30,6 +30,7 @@
   });
   const DOMSelectors = {
     column: document.querySelector(".column"),
+    pet_show: document.querySelector(".pet_show"),
 }
   const pets = [
     {
@@ -53,15 +54,32 @@
       img: "",
     }
   ]
+  function clearfields(){
+    DOMSelectors.column.innerHTML="";
+}
   const inventory = []
   function insertPets(){
-    pets.forEach((pet) => {
-        DOMSelectors.column.insertAdjacentHTML(
+    DOMSelectors.pet_show.innerHTML="";
+    show.forEach((thing) => {
+        DOMSelectors.pet_show.insertAdjacentHTML(
             "beforeend",
             `<div class="card">
-                <h3 class = "name">${pet.name}</h3>
-                <img src="${pet.img}" class="img" alt="${pet.name} Picture">
-                <h4>Multipler: ${pet.multiplier}</h4> 
+                <h3 class = "name">${thing.name}</h3>
+                <img src="${thing.img}" class="img" alt="${thing.name} Picture">
+                <h4>Multiplier: ${thing.multiplier}</h4> 
+            </div>`
+        )
+    });
+}
+function WhichPet(parameter){
+    clearfields();
+    parameter.forEach((thing) => {
+        DOMSelectors.pet_show.insertAdjacentHTML(
+            "beforeend",
+            `<div class="card">
+                <h3 class = "name">${thing.name}</h3>
+                <img src="${thing.img}" class="img" alt="${thing.name} Picture">
+                <h4>Multiplier: ${thing.multiplier}</h4> 
             </div>`
         )
     });
@@ -116,32 +134,31 @@
   }
   let prestige_points = 10
   function pet_multiplier() {
-    inventory.forEach((pet)=> console.log(pet));
+    inventory.forEach((multi)=> clicklyclicker = clicklyclicker + multi);
   }
   function pet(){
     if (prestige_points >= 1){
       prestige_points = prestige_points - 1
       const randomnumber = Math.floor(Math.random() * 10) + 1;
       console.log(randomnumber)
-    if (randomnumber === 1 || randomnumber === 2 || randomnumber === 3 || randomnumber === 4) {
-      const which_pet = pets.filter(((pets) => pets.name === "Cursor"))
-        inventory.push(which_pet)
-        console.log(which_pet)
-    } else if (randomnumber === 5 || randomnumber === 6 || randomnumber === 7) {
-      const which_pet = pets.filter(((pets) => pets.name === "Sliver Cursor"))
-        inventory.push(which_pet)
-        console.log(which_pet)
+    if (randomnumber > 0 && randomnumber <= 4) {
+        inventory.push(5)
+        let thing = pets[0]
+        WhichPet(thing);
+    } else if (randomnumber >= 5 && randomnumber <= 7) {
+        inventory.push(10)
+        let thing = pets[1]
+        WhichPet(thing);
     } else if (randomnumber === 8 || randomnumber === 9) {
-      const which_pet = pets.filter(((pets) => pets.name === "Golden Cursor"))
-        inventory.push(which_pet)
-        console.log(which_pet)
+        inventory.push(25)
+        let thing = pets[2]
+        WhichPet(thing);
     } else if (randomnumber === 10) {
-      const which_pet = pets.filter(((pets) => pets.name === "Diamond Cursor"))
-        inventory.push(which_pet)
-        console.log(which_pet)
+        inventory.push(100)
+        let thing = pets[3]
+        WhichPet(thing);
     }
     pet_multiplier()
-    console.log(inventory)
     }
   }
     </script>
