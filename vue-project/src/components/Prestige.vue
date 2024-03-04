@@ -8,6 +8,7 @@
     </div>
   </template>
   <script setup>
+  import { clicked } from "@/components/Prestige.vue";
   function prestige (){
     if (clicked.value >= 1000000){
       prestige_points = prestige_points + prestige_gain
