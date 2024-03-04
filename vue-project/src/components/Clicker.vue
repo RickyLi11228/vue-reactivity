@@ -17,6 +17,13 @@
   <h2>Increase Clicked Exponent By 0.05</h2>
   <button @click="upgrader4">Click Me</button>
   <h3>Cost: {{ upgrade4_cost }}</h3>
+
+  <h2>Prestige</h2>
+  <h3>Your Prestige Points: {{ prestige_points }}</h3>
+  <button @click="prestige"> Click Me</button> 
+  <h2>PP gain: {{ prestige_gain }}</h2>
+  <h3>Cost: 1000000</h3>
+  
   <h2>Pets</h2>
   <button @click="pet">Click Me</button>
   <h3>Cost: 1 Prestige Point</h3>
@@ -81,6 +88,7 @@ function WhichPet(parameter) {
   let clicklyclicker = 1
   function increment() {
     clicked.value = clicked.value + clicklyclicker;
+    prestige_gainer()
   }
   let upgrade1 = ref(1)
   function upgrader1() {
@@ -152,6 +160,27 @@ function pet(){
     value_update();
   }
 }
+let prestige_gain = 0
+function prestige_gainer(){
+  prestige_gain = Math.round(clicked.value / 1000000)
+}
+function prestige (){
+    if (clicked.value >= 1000000){
+      prestige_points = prestige_points + prestige_gain
+      upgrade1_cost = 1
+      upgrade2_cost = 100
+      upgrade3_cost = 10000
+      upgrade4_cost = 100000
+      clicklyclicker = 1
+      upgrade1.value = 1
+      upgrade2.value = 1
+      upgrade3.value = 0
+      upgrade4.value = 1
+      clicked.value = 0;
+    }else{
+      console.log(clicked.value)
+    }
+  }
 
     </script>
   
