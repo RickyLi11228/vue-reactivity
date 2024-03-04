@@ -9,14 +9,6 @@ const router = createRouter({
       name: 'home',
       component: HomeView
     },
-    {
-      path: '/prestige',
-      name: 'prestige',
-      // route level code-splitting
-      // this generates a separate chunk (Prestige.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/PrestigeView.vue')
-    }
   ]
 })
 
