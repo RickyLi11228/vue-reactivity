@@ -181,7 +181,6 @@ function prestige (){
       console.log(clicked.value)
     }
   }
-
     </script>
   
   <style scoped>
