@@ -26,7 +26,6 @@
   
   <script setup>
   import { ref } from "vue";
-  export const clicked = ref(0);
   const props = defineProps({
     Destination: Object,
   });
