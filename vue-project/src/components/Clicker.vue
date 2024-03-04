@@ -38,17 +38,17 @@
     {
       name: "Cursor",
       multiplier: 5,
-      img: "https://i.pinimg.com/736x/6c/1e/71/6c1e71b6338b0bf4e9ca8c0fc365d509.jpg",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4g4yy2I0zTmvDA_xP4ctu3jUrQdZH2ZLzUA&usqp=CAU",
     },
     {
       name: "Sliver Cursor",
       multiplier: 10,
-      img: "https://atlas-content-cdn.pixelsquid.com/stock-images/symbol-cursor-arrow-silver-2JKw5K7-600.jpg",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7r2_Au4cmXF_bUl_4VZnF7fr8nCnWhPgcJQ&usqp=CAU",
     },
     {
       name: "Golden Cursor",
       multiplier: 25,
-      img: ""
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3BjjuGO4Oz3UWJR--Xj2OghyRa6Vx1abBvQ&usqp=CAU"
     },
     {
       name: "Diamond Cursor",
